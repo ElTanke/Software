@@ -1,0 +1,23 @@
+camera_matrix:
+  cols: 3
+  data: [162.1550496029681, 0.0, 162.94146111338983, 0.0, 163.99106028292897, 119.97917976070552,
+    0.0, 0.0, 1.0]
+  rows: 3
+camera_name: duckiebot/camera_node
+distortion_coefficients:
+  cols: 5
+  data: [-0.2553887427175968, 0.057342647743455065, -0.00019258648688783803, 0.005576240224269156,
+    0.0]
+  rows: 1
+distortion_model: plumb_bob
+image_height: 240
+image_width: 320
+projection_matrix:
+  cols: 4
+  data: [119.62747955322266, 0.0, 166.99179337975875, 0.0, 0.0, 137.52491760253906,
+    119.86745210693971, 0.0, 0.0, 0.0, 1.0, 0.0]
+  rows: 3
+rectification_matrix:
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+  rows: 3
