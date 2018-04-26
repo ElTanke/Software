@@ -19,22 +19,14 @@ class controller(object):
 		print msg.axes
 		print msg.buttons
 		if msg.buttons[0]==1:
-			x1=msg.axes[0]
-			x2=msg.axes[3]
-			print x2
-			if x1>0.9:
-				self.twist.v=5
-			if x2>0.9:
-				self.twist.omega=-5
-			if x1<-0.9:
-				self.twist.v=-5
-			if x2<-0.9:
-				self.twist.omega=-5
+			turn=msg.axes[0]
+			speed=msg.axes[1]
+			self.twist.v=speed
+			self.twist.omega=5*turn
+
 		else:
 			self.twist.v=0
 			self.twist.omega=0
-		#if msg.buttons[1]==1:
-		print self.twist.v
 			
 		self.publisher.publish(self.twist)
 		
