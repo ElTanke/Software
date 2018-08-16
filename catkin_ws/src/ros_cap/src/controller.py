@@ -5,6 +5,8 @@ from std_msgs.msg import String, Int32 # importar mensajes de ROS tipo String y 
 from geometry_msgs.msg import Twist # importar mensajes de ROS tipo geometry / Twist
 from sensor_msgs.msg import Joy
 from duckietown_msgs.msg import Twist2DStamped
+import serial
+import time
 
 class controller(object):
 	def __init__(self):
@@ -12,12 +14,18 @@ class controller(object):
 		self.subscriber=rospy.Subscriber("/duckiebot/joy",Joy,self.callback)
 		self.publisher=rospy.Publisher("/duckiebot/wheels_driver_node/car_cmd",Twist2DStamped,queue_size=1)
 		self.twist=Twist2DStamped()
+		self.ser=serial.Serial('/dev/ttyACM0',9600)
+		time.sleep(3)
 
 
                 
         def callback(self,msg):
 		print msg.axes
 		print msg.buttons
+		if msg.buttons[2]==1:
+			self.ser.write('u')
+		if msg.buttons[3]==1:
+			self.ser.write('d')
 		if msg.buttons[0]==1:
 			turn=msg.axes[0]
 			speed=msg.axes[1]
